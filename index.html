@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Форма для авторизации</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="style.css" type="text/css">
+	<script Language="JavaScript">
+
+		function IsEmpty (data){
+			if (data.length==0) return true
+			else return false
+		}
+		function IsSymbol(data){
+			if (data.length>5) return true
+			else return false
+		}
+
+		function IsFormOK(){
+			if (IsEmpty(document.form1.Myname.value)) {
+				alert("Введите логин!")
+				}
+			if (IsEmpty(document.form1.MyPassword.value)) {
+				alert("Введите пароль!")
+			}
+			if (!IsSymbol(document.form1.MyPassword.value)) {
+				alert("Пароль должен содержать более 5 символов")
+				return false}
+
+			if (!IOF(document.form1.Myname.value)) {
+				alert("Отказано в доступе")
+				return false}
+            else alert("Добро пожаловать, администратор");
+			return true
+		}
+		function IOF(data) {
+			if (data.indexOf("admin") != -1) {
+				return true
+			}
+			return false
+		}
+
+	</script>
+
+</head>
+<body>
+<div class="dws-wrapper" onSubmit="return IsFormOK()">
+	<div class="dws-form">
+		<!-- Вкладки на CSS -->
+		<input type="radio" id="tab-1" name="tabs" checked>
+		<label class="tab" for="tab-1" title="Вкладка 1">Авторизация</label>
+
+		<input type="radio" name="tabs" id="tab-2">
+		<label class="tab" for="tab-2" title="Вкладка 2">Регистрация</label>
+		<BR>
+
+
+		<form name="form1" сlass="tab-form">
+			<div class="box-input">
+				<input type="text"  name="Myname"  placeholder="Введите Логин">
+					</div>
+
+			<div class="box-input">
+				<input type="password"  name="MyPassword" placeholder="Введите Пароль"  >
+
+			</div>
+
+
+			<input type="submit" class="button" value="Войти"/>
+			<ul class="social">
+				<li><a href="#"><div><i class="fa fa-facebook"></i></div></a></li>
+				<li><a href="#"><div><i class="fa fa-twitter"></i></div></a></li>
+				<li><a href="#"><div><i class="fa fa-instagram"></i></div></a></li>
+				<li><a href="#"><div><i class="fa fa-vk"></i></div></a></li>
+				<li><a href="#"><div><i class="fa fa-youtube"></i></div></a></li>
+			</ul>
+			<a href="#">Я забыл свой E-mail или пароль</a>
+
+		</form>
+
+		<form id="form-2" class="tab-form">
+			<input class="input" type="email" placeholder="Введите E-mail адрес">
+			<input class="input" type="text" placeholder="Введите свое имя">
+			<input class="input" type="password" placeholder="Введите пароль">
+			<input type="submit" value="Зарегистрироваться"/>
+
+			<div class="recover">
+				<input type="checkbox" id="ckbox">
+				<label for="ckbox">Ознакомлен(-а) и принимаю <a href="#">условия регистрации</a></label>
+			</div>
+		</form>
+
+	</div>
+</div>
+</body>
+</html>
